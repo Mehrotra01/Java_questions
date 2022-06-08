@@ -1,0 +1,16 @@
+class solution{
+  static int findSingle(int[]arr){
+  int res = arr[0];
+  int a1= arr.length;
+  for(int i=1;i <a1;i++)
+    res= res ^ ar[i];
+  
+  return res;
+  
+  }
+  public static void main(String[] args){
+  int arr[]={5,7,65,67,68,};
+  System.out.println("Element occurring once is " +
+                            findSingle(ar, n) + " ");
+  }
+}
