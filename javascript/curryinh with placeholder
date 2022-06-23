@@ -1,0 +1,51 @@
+function curry(func) {
+  return function toCurry(...args) {
+    const sanitizedArgs = args.slice(0, func.length);
+    console.log(sanitizedArgs);
+    const hasPlaceholder = sanitizedArgs.some(
+      (arg) => arg === curry.placeholder
+    );
+    if (!hasPlaceholder && sanitizedArgs.length === func.length) {
+      return func.apply(this, sanitizedArgs);
+    } else {
+      return function (...newArgs) {
+        return toCurry.apply(this, mergeArgs(sanitizedArgs, newArgs));
+      };
+    }
+  };
+}
+
+function mergeArgs(oldArgs, newArgs) {
+  const mergedArgs = [];
+
+  let i = 0;
+  let j = 0;
+
+  while (i < oldArgs.length && j < newArgs.length) {
+    if (oldArgs[i] === curry.placeholder) {
+      mergedArgs.push(newArgs[j]);
+      j++;
+      i++;
+    } else {
+      mergedArgs.push(oldArgs[i]);
+      i++;
+    }
+  }
+
+  while (i < oldArgs.length) {
+    mergedArgs.push(oldArgs[i]);
+    i++;
+  }
+
+  while (j < newArgs.length) {
+    mergedArgs.push(newArgs[j]);
+    j++;
+  }
+
+  return mergedArgs;
+}
+function add(a,b,c){
+return a+b+c;
+}
+
+curry.placeholder = Symbol(add);
