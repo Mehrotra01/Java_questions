@@ -1,0 +1,22 @@
+class solution{
+  public vector<vector<int>> subsequences(vector<int> nums){
+      vector<vector<int>> ans = new vector<vector<int>>();
+      vector<int> output= new vector<int>();
+      return solve(0,output,ans,nums);
+}
+ static vector<vector<int>> solve(int index,vector<int> output,vector<vector<int>> ans,vector<int> nums){
+ // base condition
+    if(index>=nums.size()){
+        ans.push(output);
+        return ans;
+    }
+    
+    // exclude
+        solve(index+1,output,ans,nums);
+        
+    //include
+        int element = nums[index];
+        output.push(element);
+        solve(index+1,output,ans,nums);
+        
+ }
