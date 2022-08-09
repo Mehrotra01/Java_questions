@@ -1,0 +1,42 @@
+class solution{
+    ArrayList<Integer> findSpiral(Node root) 
+    {
+        // Your code here
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        printSpiral(root,res);
+        return res;
+    }
+    void printSpiral(Node node,ArrayList<Integer> res){
+        int h = height(node);
+        int i;
+        boolean ltr = false;
+        for (i = 1; i <= h; i++) {
+            printGivenLevel(node, i, ltr,res);
+             ltr = !ltr;
+        }
+    }
+    int height(Node node){
+        if (node == null)
+            return 0;
+        else {
+        int lheigth = height(node.left); 
+        int rheigth = height(node.right);
+            if (lheight > rheight)
+                return (lheight + 1);
+            else
+                return (rheight + 1);
+    }
+    void printGivenLevel(Node node,int i,boolean ltr,ArrayList<Integer> res){
+    if (node == null)
+            return;
+        if(level==1){res.add(node.data);}
+        else if(level>1){
+            if(ltr){            
+                printGivenLevel(node.left, level - 1, ltr,res);
+                printGivenLevel(node.right, level - 1, ltr,res);
+            }else{
+                printGivenLevel(node.right, level - 1, ltr,res);
+                printGivenLevel(node.left, level - 1, ltr,res);}
+        }
+    }
+}
