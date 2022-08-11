@@ -1,0 +1,19 @@
+class solution{
+public static boolean isLucky(int n)
+    {
+    int x=2; //beacuse it delete's every 2,3 number
+	   while(x<=n){  
+	       if(n%x!=0){
+	           n = n-(int)Math.floor(n/x);
+ 	           x++;
+	       }else{
+	          return false;
+	   //System.out.println("false");
+	           
+	       }
+	   }
+	   return true;
+	   //System.out.println("true");
+	}
+    }
+}
