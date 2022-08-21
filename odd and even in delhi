@@ -1,0 +1,39 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+	Scanner sc= new Scanner(System.in);
+	int n= sc.nextInt();
+	int num, rem;	
+	for(int i = 1;i<=n;i++)
+	{
+		num = sc.nextInt();
+ 		int Odd =0;
+	    int Even =0;
+	    while(num!=0){
+		
+		rem = num %10;
+		if(rem %2 !=0)
+		{
+			Odd +=rem;
+			
+		}
+		else if(rem%2==0)
+		{
+			Even += rem;
+		}
+		num/=10;
+	    }
+	
+	
+	if(Odd %3==0 || Even%4 ==0)
+	{
+		System.out.println("Yes");
+	}
+	else 
+	{
+		System.out.println("No");
+	}
+	}
+
+    }
+}
