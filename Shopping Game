@@ -1,0 +1,36 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc= new Scanner(System.in);
+	int t = sc.nextInt();
+	for(int f=0;f<t;f++){
+		int m = sc.nextInt();
+		int n = sc.nextInt();
+			solve(m,n);
+			}
+    }
+    static void solve(int m,int n){
+        int i = 1, j = 2;
+
+        m -= i;
+        n -= j;
+
+        while(true){
+
+            if(m<0){
+                System.out.println("Harshit");
+                break;
+            }
+
+            if(n<0){
+                System.out.println("Aayush");
+                break;
+            }
+
+            i += 2;
+            j += 2;
+            m -= i;
+            n -= j;
+        }
+    }
+}
